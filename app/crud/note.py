@@ -1,16 +1,14 @@
 from datetime import date
-from typing import List
 
 from app.models import Note, Venta
 from app.schemas.note import NoteCreate, NoteUpdate
-from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .base import CRUDBase
 
 
 class CrudNote(CRUDBase[Note, NoteCreate, NoteUpdate]):
-    def create_note(self, db: Session, note: NoteCreate):
+    def create_note(self, db: Session, note: NoteCreate) -> Note:
         db_note = self.model(cliente=note.cliente,
                              total=note.total, anticipo=note.anticipo,
                              date=date.today())

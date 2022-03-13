@@ -24,7 +24,7 @@ class Venta(Base):
     total = Column(Float)
     note_id = Column(Integer, ForeignKey("note.id"))
     product_id = Column(Integer, ForeignKey("product.id"))
-    product_obj = relationship("Product")
+    product_obj = relationship("Product", viewonly=True)
 
     @hybrid_property
     def product(self):
