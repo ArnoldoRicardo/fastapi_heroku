@@ -1,5 +1,6 @@
 from app.database import Base
 from sqlalchemy import Column, Date, Float, ForeignKey, Integer, String
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
 
 
@@ -23,6 +24,11 @@ class Venta(Base):
     total = Column(Float)
     note_id = Column(Integer, ForeignKey("note.id"))
     product_id = Column(Integer, ForeignKey("product.id"))
+    product_obj = relationship("Product")
+
+    @hybrid_property
+    def product(self):
+        return self.product_obj.nombre
 
 
 class Compra(Base):

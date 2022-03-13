@@ -14,7 +14,7 @@ def get_notes(star_fecha: str, db: Session = Depends(get_db)):
     notes = crudNote.get_multi(db)
     if len(notes) < 1:
         raise HTTPException(status_code=404, detail="Items not found")
-    return notes[0]
+    return notes
 
 
 @router.post('/', response_model=schemas.Note)

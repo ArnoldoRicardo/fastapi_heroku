@@ -9,7 +9,8 @@ class VentaBase(BaseModel):
 class Venta(VentaBase):
     id: int
     note_id: int
-    product_id: int
+    _product_id: int
+    product: str
 
     class Config:
         orm_mode = True
