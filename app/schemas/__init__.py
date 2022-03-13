@@ -1,2 +1,3 @@
-from .base import Compra, Note, NoteBase, NoteCreate
+from .compra import Compra
+from .note import Note, NoteBase, NoteCreate
 from .product import Product, ProductCreate

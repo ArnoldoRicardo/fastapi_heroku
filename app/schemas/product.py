@@ -2,7 +2,8 @@ from typing import List
 
 from pydantic import BaseModel
 
-from .base import Compra, Venta
+from .compra import Compra
+from .venta import Venta
 
 
 class ProductBase(BaseModel):

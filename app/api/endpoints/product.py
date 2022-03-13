@@ -17,6 +17,14 @@ def get_Product(name: str, db: Session = Depends(get_db)):
     return products
 
 
+@router.get('/', response_model=List[schemas.Product])
+def get_all(db: Session = Depends(get_db)):
+    products = crudProduct.get_multi(db=db)
+    if len(products) < 1:
+        raise HTTPException(status_code=404, detail="Items not found")
+    return products
+
+
 @router.post('/', response_model=schemas.Product)
 def create_product(new_product: schemas.ProductCreate, db: Session = Depends(get_db)):
     product = crudProduct.create(db=db, obj_in=new_product)
