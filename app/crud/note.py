@@ -2,6 +2,7 @@ from datetime import date
 
 from app.models import Note, Venta
 from app.schemas.note import NoteCreate, NoteUpdate
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .base import CRUDBase
@@ -24,6 +25,12 @@ class CrudNote(CRUDBase[Note, NoteCreate, NoteUpdate]):
             db.refresh(db_venta)
 
         return db_note
+
+    def get_notes(self, fecha: str, db: Session):
+        query = select(self.model).where(self.model.date.like(f'%{fecha}%'))
+        notes = db.execute(query).all()
+        result = list(zip(*notes))
+        return result
 
 
 crudNote = CrudNote(Note)
