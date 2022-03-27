@@ -1,11 +1,12 @@
+from app.api.deps import oauth2_scheme
 from app.api.endpoints import note, product
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 
 api_router = APIRouter()
 
 
 @api_router.get('/')
-def main():
+def main(token: str = Depends(oauth2_scheme)):
     return {"info": "hola soy una api"}
 
 
