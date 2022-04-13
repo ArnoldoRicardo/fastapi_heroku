@@ -1,1 +1,2 @@
-from .base import Base, Compra, Note, Product, Venta
+from .base import Compra, Note, Product, Venta
+from .user import User
