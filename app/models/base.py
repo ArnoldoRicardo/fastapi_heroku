@@ -5,8 +5,6 @@ from sqlalchemy.orm import relationship
 
 
 class Note(Base):
-    __tablename__ = "note"
-
     id = Column(Integer, primary_key=True, index=True)
     cliente = Column(String)
     total = Column(Float)
@@ -17,8 +15,6 @@ class Note(Base):
 
 
 class Venta(Base):
-    __tablename__ = "venta"
-
     id = Column(Integer, primary_key=True, index=True)
     cantidad = Column(Float)
     total = Column(Float)
@@ -32,8 +28,6 @@ class Venta(Base):
 
 
 class Compra(Base):
-    __tablename__ = "compra"
-
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String)
     cantidad = Column(Float)
@@ -43,8 +37,6 @@ class Compra(Base):
 
 
 class Product(Base):
-    __tablename__ = "product"
-
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String)
     categoria = Column(String)
